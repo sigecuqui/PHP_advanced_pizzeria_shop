@@ -16,7 +16,7 @@ class UsersTable extends Table
 
         foreach ($rows as $id => &$row) {
             $row['id'] = $id;
-            $roleForm = new RoleForm($row['role'], $row['id']);
+            $roleForm = new RoleForm($row['role'], $id);
             $rows[$id]['role_form'] = $roleForm->render();
 
             if ($row['email'] === $_SESSION['email']) {
