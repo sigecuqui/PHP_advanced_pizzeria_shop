@@ -30,7 +30,8 @@ class UsersTable extends Table
             'headers' => [
                 'NAME',
                 'ROLE',
-                'ID'
+                'ID',
+                'STATUS'
             ],
             'rows' => $rows
         ]);
