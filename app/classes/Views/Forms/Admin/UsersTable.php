@@ -9,6 +9,10 @@ class UsersTable extends Table
 {
     protected RoleForm $form;
 
+    /**
+     * UsersTable constructor.
+     * @throws \Exception
+     */
     public function __construct()
     {
         $this->form = new RoleForm();
@@ -25,12 +29,14 @@ class UsersTable extends Table
             unset($row['email'], $row['password']);
         }
 
-
+        /**
+         * Table generate: header array + rows data
+         */
         parent::__construct([
             'headers' => [
                 'NAME',
                 'ROLE',
-                'ID',
+                'ID', // this should be first
                 'STATUS'
             ],
             'rows' => $rows

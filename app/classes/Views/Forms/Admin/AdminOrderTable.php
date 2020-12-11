@@ -5,6 +5,7 @@ namespace App\Views\Forms\Admin;
 
 
 use App\App;
+use App\Views\Content\TimeStamp;
 use App\Views\Forms\Admin\StatusForm;
 use Core\Views\Table;
 
@@ -24,6 +25,7 @@ class AdminOrderTable extends Table
             $row['full_name'] = $user['name'];
 
             // timestamp logic
+
             $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
             $difference = abs(strtotime('now') - strtotime($timeStamp));
 
@@ -31,12 +33,14 @@ class AdminOrderTable extends Table
             $hours = floor($difference / 3600);
             $minutes = floor(($difference - ($hours * 3600)) / 60);
 
-            $result = "{$days}d {$hours}:{$minutes} hours";
+            $result = "{$days} days {$hours}:{$minutes} hours";
+
             $row['timestamp'] = $result;
+            ///
 
             $statusForm = new StatusForm($row['status'], $id);
             $rows[$id]['role_form'] = $statusForm->render();
-            unset($row['email'],$row['status']);
+            unset($row['email'], $row['status']);
         }
 
         /**

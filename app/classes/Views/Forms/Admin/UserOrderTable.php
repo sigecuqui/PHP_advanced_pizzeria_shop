@@ -22,7 +22,7 @@ class UserOrderTable extends Table
             $hours = floor($difference / 3600);
             $minutes = floor(($difference - ($hours * 3600)) / 60);
 
-            $result = "{$days}d {$hours}:{$minutes} hours";
+            $result = "{$days} days {$hours}:{$minutes} hours";
             $row['timestamp'] = $result;
 
             unset($row['email']);

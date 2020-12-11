@@ -35,7 +35,7 @@ table, th, td {
 
 form {
     width: 400px;
-    margin: 20px 0;
+    margin: 5px 0;
 }
 
 span,
@@ -43,7 +43,7 @@ form p {
     font-weight: bold;
 }
 
-.input-field, .btn, .link {
+.input-field {
     background-color: white;
     padding: 7px;
     margin: 5px;
@@ -61,6 +61,8 @@ form p {
     cursor: pointer;
     font-size: 13px;
     transition: 0.4s;
+    padding: 7px;
+    border: none;
 }
 
 .btn_create {

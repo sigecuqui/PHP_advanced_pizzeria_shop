@@ -4,6 +4,7 @@
             <th><?php print $header; ?></th>
         <?php endforeach; ?>
     </tr>
+
     <?php foreach ($data['rows'] as $row): ?>
         <tr>
             <?php foreach ($row as $col): ?>
