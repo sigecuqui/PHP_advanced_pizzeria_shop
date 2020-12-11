@@ -76,7 +76,7 @@ form p {
     transition: 0.4s;
 }
 
-.btn_create:hover{
+.btn_create:hover {
     background-color: black;
 }
 
@@ -177,7 +177,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 250px;
-    height: 400px;
+    height: 430px;
 }
 
 img {
@@ -188,13 +188,25 @@ img {
     border-radius: 10px;
 }
 
-.product_bottom {
-    width: 150px;
-}
 h3, h1 {
     margin: 10px;
 }
 
 img:hover {
     transform: scale(1.1);
+}
+
+/* discount */
+
+.price_discount {
+    border: 2px solid red;
+}
+
+.price_first {
+    background-color: red;
+    padding: 5px;
+    margin-inline-start: auto;
+    width: 75px;
+    color: white;
+    text-decoration: line-through solid white;
 }

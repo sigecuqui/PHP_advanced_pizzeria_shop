@@ -3,21 +3,24 @@
 
     <?php foreach ($data['products'] as $product) : ?>
 
-        <div class="item">
+        <div class="item <?php print ($product['discount'] ?? false) ? 'price_discount' : ''; ?>">
             <img src="<?php print $product['image']; ?>" alt="image">
-            <div>
                 <h3><?php print $product['name']; ?></h3>
-                <p><?php print $product['price']; ?> EUR</p>
-            </div>
+                <?php if (isset($product['discount'])): ?>
+
+                    <p class="price_first"><?php print $product['price_different']; ?></p>
+
+                <?php endif; ?>
+            <p><?php print $product['price']; ?></p>
             <div>
-                <?php print $product['order']; ?>
-                <?php print $product['link']; ?>
-                <?php print $product['delete']; ?>
+                <?php print ($product['order'] ?? false) ? $product['order'] : ''; ?>
+                <?php print ($product['link'] ?? false) ? $product['link'] : ''; ?>
+                <?php print ($product['delete'] ?? false) ? $product['delete'] : ''; ?>
             </div>
         </div>
 
     <?php endforeach; ?>
 </section>
 
-<?php print $data['redirect']; ?>
-<?php print $data['discount']; ?>
+<?php print $data['buttons']['redirect']; ?>
+<?php print $data['buttons']['add_discount']; ?>
