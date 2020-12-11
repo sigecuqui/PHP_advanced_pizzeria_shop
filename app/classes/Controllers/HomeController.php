@@ -76,14 +76,13 @@ class HomeController extends Controller
             foreach ($discounts as $discount_id => $discount) {
                 if ($id == $discount['pizza_id']) {
                     $row['discount'] = true;
-                }
-                if (isset($row['discount'])) {
-                    $row['price_different'] = $row['price'];
+                    $row['price_different'] = number_format($row['price'], 2);
                     $row['price'] = $discount['price'];
                 }
             }
+
             if (App::$session->getUser()) {
-                if (App::$session->getUser()['role'] === 'admin') {
+                if (App::$session->getUser()['email'] === 'admin@admin.lt') {
                     $this->link = new Link([
                         'link' => "{$url}?id={$id}",
                         'class' => 'link',
@@ -94,25 +93,22 @@ class HomeController extends Controller
 
                     $deleteForm = new DeleteForm($id);
                     $row['delete'] = $deleteForm->render();
-                    $row['order'] = '';
 
                 } elseif (App::$session->getUser()['role'] === 'user') {
 
                     $orderForm = new OrderForm($row['name']);
                     $row['order'] = $orderForm->render();
-                    $row['link'] = '';
-                    $row['delete'] = '';
                 }
-            } else {
-                $row['order'] = '';
-                $row['link'] = '';
-                $row['delete'] = '';
             }
+            $price = number_format($row['price'], 2);
+            $row['price'] = "{$price} $";
         }
         $content = new View([
             'title' => 'WELCUM TU PYZERIE',
-            'redirect' => $home_content->redirect(),
-            'discount' => $home_content->addDiscount(),
+            'buttons' => [
+                'redirect' => $home_content->redirect(),
+                'add_discount' => $home_content->addDiscount(),
+            ],
             'products' => $rows
         ]);
 

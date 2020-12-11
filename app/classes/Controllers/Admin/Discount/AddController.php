@@ -19,13 +19,12 @@ class AddController extends AuthController
     public function __construct()
     {
         parent::__construct();
-        $id_array = [];
         $pizzas = App::$db->getRowsWhere('pizzas');
 
         foreach ($pizzas as $pizza_id => $pizza) {
-            $id_array[$pizza_id] = $pizza['name'];
+            $options[$pizza_id] = $pizza['name'];
         }
-        $this->form = new DiscountForm($id_array);
+        $this->form = new DiscountForm($options);
         $this->page = new BasePage([
             'title' => 'ADD DISCOUNT',
         ]);

@@ -9,10 +9,6 @@ class UsersTable extends Table
 {
     protected RoleForm $form;
 
-    /**
-     * UsersTable constructor.
-     * @throws \Exception
-     */
     public function __construct()
     {
         $this->form = new RoleForm();
@@ -22,7 +18,7 @@ class UsersTable extends Table
             $row['id'] = $id;
             $row['username'] = $row['name'];
 
-            $roleForm = new RoleForm($row['role'], $id);
+            $roleForm = new RoleForm($row['role'], $row['id']);
             $rows[$id]['role_form'] = $roleForm->render();
 
             if ($row['email'] === $_SESSION['email']) {

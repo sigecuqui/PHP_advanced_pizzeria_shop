@@ -16,15 +16,13 @@ class DiscountTable extends Table
         $pizzas = App::$db->getRowsWhere('pizzas');
 
         foreach ($pizzas as $pizza_id => $pizza) {
-            $names[$pizza_id] = $pizza['name'];
+            $titles[$pizza_id] = $pizza['name'];
         }
 
-        $discount = 0;
-
         foreach ($rows as $id => $row) {
-            $rows[$id]['id'] = ++$discount;
+            $rows[$id]['id'] = $id;
 
-            $rows[$id]['name'] = $names[$rows[$id]['pizza_id']];
+            $rows[$id]['name'] = $titles[$rows[$id]['pizza_id']];
             $rows[$id]['discount_price'] = $rows[$id]['price'];
 
             $link = new Link([
@@ -38,8 +36,7 @@ class DiscountTable extends Table
             $deleteForm = new DeleteForm($id);
             $rows[$id]['delete'] = $deleteForm->render();
 
-            unset($rows[$id]['pizza_id']);
-            unset($rows[$id]['price']);
+            unset($rows[$id]['pizza_id'], $rows[$id]['price']);
         }
 
         parent::__construct([
