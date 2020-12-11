@@ -102,6 +102,7 @@ class HomeController extends Controller
         $content = new View([
             'title' => 'WELCUM TU PYZERIE',
             'redirect' => $home_content->redirect(),
+            'discount' => $home_content->addDiscount(),
             'products' => $rows
         ]);
 

@@ -22,6 +22,7 @@ class Navigation extends View
             if (App::$session->getUser()['email'] === 'admin@admin.lt') {
                 return $nav + [
                         'ADD' => App::$router::getUrl('add'),
+                        'DISCOUNTS' => App::$router::getUrl('admin_discounts'),
                         'ORDERS' => App::$router::getUrl('admin_orders'),
                         'USERS' => App::$router::getUrl('admin_users'),
                         'LOGOUT' => App::$router::getUrl('logout'),
