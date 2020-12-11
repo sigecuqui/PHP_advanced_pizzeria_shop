@@ -110,11 +110,11 @@ function validate_numeric(string $field_value, array &$field): bool
 /**
  * Check if selected value is one of the possible options in options array
  *
- * @param string $field_input
+ * @param $field_input
  * @param array $field
  * @return bool
  */
-function validate_select(string $field_input, array &$field): bool
+function validate_select($field_input, array &$field): bool
 {
     if (!isset($field['options'][$field_input])) {
         $field['error'] = 'Input doesn\'t exist';

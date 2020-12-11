@@ -7,7 +7,7 @@ use Core\Views\Form;
 
 class DiscountForm extends Form
 {
-    public function __construct($pizza_id = null)
+    public function __construct($options = null)
     {
         parent::__construct([
             'attr' => [
@@ -17,10 +17,9 @@ class DiscountForm extends Form
                 'pizza_id' => [
                     'label' => 'PRODUCT TITLE',
                     'type' => 'select',
-                    'options' => $pizza_id,
-                    'value' => '',
+                    'options' => $options,
                     'validators' => [
-                        'validate_select'
+//                        'validate_select'
                     ],
                     'extra' => [
                         'attr' => [
@@ -31,11 +30,11 @@ class DiscountForm extends Form
                 ],
                 'price' => [
                     'label' => 'PRICE',
-                    'type' => 'number',
+                    'type' => 'text',
                     'value' => '',
                     'validators' => [
                         'validate_field_not_empty',
-                        'validate_is_numeric'
+                        'validate_numeric'
                     ],
                     'extra' => [
                         'attr' => [

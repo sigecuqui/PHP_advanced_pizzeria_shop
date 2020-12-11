@@ -79,6 +79,22 @@ class HomeContent
         }
     }
 
+    public function addDiscount()
+    {
+        if (!App::$session->getUser()) {
+            return '';
+        } elseif (App::$session->getUser()) {
+            if (App::$session->getUser()['email'] === 'admin@admin.lt') {
+                $this->link = new Link([
+                    'link' => '/admin/discounts/add',
+                    'class' => 'link',
+                    'text' => 'DISCOUNT'
+                ]);
+
+                return $this->link->render();
+            }
+        }
+    }
 
 }
 

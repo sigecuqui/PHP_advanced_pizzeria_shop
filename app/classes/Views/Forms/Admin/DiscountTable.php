@@ -14,29 +14,39 @@ class DiscountTable extends Table
         $url = App::$router::getUrl('admin_discounts_edit');
 
         $pizzas = App::$db->getRowsWhere('pizzas');
+
         foreach ($pizzas as $pizza_id => $pizza) {
             $names[$pizza_id] = $pizza['name'];
         }
 
+        $discount = 0;
+
         foreach ($rows as $id => $row) {
-            $rows[$id]['name'] = $names[$id];
+            $rows[$id]['id'] = ++$discount;
+
+            $rows[$id]['name'] = $names[$rows[$id]['pizza_id']];
+            $rows[$id]['discount_price'] = $rows[$id]['price'];
 
             $link = new Link([
                 'link' => "{$url}?id={$id}",
                 'class' => 'link',
                 'text' => 'EDIT'
             ]);
+
             $rows[$id]['link'] = $link->render();
 
             $deleteForm = new DeleteForm($id);
             $rows[$id]['delete'] = $deleteForm->render();
+
+            unset($rows[$id]['pizza_id']);
+            unset($rows[$id]['price']);
         }
 
         parent::__construct([
             'headers' => [
                 'ID',
-                'PRICE',
                 'PIZZA TITLE',
+                'PRICE',
                 'EDIT',
                 'DELETE'
             ],

@@ -67,11 +67,21 @@ class HomeController extends Controller
         $home_content->content();
 
         $rows = App::$db->getRowsWhere('pizzas');
-
         $url = App::$router::getUrl('edit');
+        $discounts = App::$db->getRowsWhere('discounts');
 
 
         foreach ($rows as $id => &$row) {
+
+            foreach ($discounts as $discount_id => $discount) {
+                if ($id == $discount['pizza_id']) {
+                    $row['discount'] = true;
+                }
+                if (isset($row['discount'])) {
+                    $row['price_different'] = $row['price'];
+                    $row['price'] = $discount['price'];
+                }
+            }
             if (App::$session->getUser()) {
                 if (App::$session->getUser()['role'] === 'admin') {
                     $this->link = new Link([

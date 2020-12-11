@@ -16,12 +16,13 @@ class AddForm extends Form
                 'name' => [
                     'label' => 'ITEM',
                     'type' => 'text',
+                    'value' => '',
                     'validators' => [
                         'validate_field_not_empty',
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Enter item\'s name',
+                            'placeholder' => 'Enter pizza\'s title',
                             'class' => 'input-field',
                         ],
                     ],
@@ -29,6 +30,7 @@ class AddForm extends Form
                 'price' => [
                     'label' => 'PRICE',
                     'type' => 'text',
+                    'value' => '',
                     'validators' => [
                         'validate_field_not_empty',
                         'validate_numeric',
@@ -47,6 +49,7 @@ class AddForm extends Form
                 'image' => [
                     'label' => 'IMAGE URL',
                     'type' => 'text',
+                    'value' => '',
                     'validators' => [
                         'validate_field_not_empty',
                         'validate_url',
@@ -60,7 +63,7 @@ class AddForm extends Form
                 ],
             ],
             'buttons' => [
-                'send' => [
+                'submit' => [
                     'title' => 'ADD',
                     'type' => 'submit',
                     'extra' => [

@@ -1,6 +1,4 @@
 <h1 class="header header--main"><?php print $data['title']; ?></h1>
-<?php print $data['redirect']; ?>
-<?php print $data['discount']; ?>
 <section class="product__section">
 
     <?php foreach ($data['products'] as $product) : ?>
@@ -20,3 +18,6 @@
 
     <?php endforeach; ?>
 </section>
+
+<?php print $data['redirect']; ?>
+<?php print $data['discount']; ?>
