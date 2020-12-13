@@ -67,3 +67,29 @@ function validate_row_exists(string $field_input, array &$field): bool
 
     return false;
 }
+
+/**
+ * Checks if written discount is not higher, when original price in the database
+ *
+ * @param array $filtered_input
+ * @param array $form
+ * @return bool
+ */
+function validate_lower_number(array $filtered_input, array &$form): bool
+{
+    $pizzas = App::$db->getRowsWhere('pizzas');
+    foreach ($pizzas as $pizza_id => $pizza) {
+        if ($filtered_input['pizza_id'] == $pizza_id) {
+            $filtered_input['pizza_id'] = $pizza['name'];
+        }
+    }
+    $selected_pizza = App::$db->getRowWhere('pizzas', ['name' => $filtered_input['pizza_id']]);
+
+    if ($selected_pizza['price'] <= $filtered_input['price']) {
+        $form['error'] = 'CHOOSE A LOWER PRICE';
+
+        return false;
+    }
+
+    return true;
+}

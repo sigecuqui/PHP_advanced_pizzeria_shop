@@ -17,11 +17,12 @@ class OrdersController extends AuthController
     public function __construct()
     {
         parent::__construct();
+
         $this->page = new BasePage([
             'title' => 'ORDERS',
         ]);
-        $this->form = new StatusForm();
 
+        $this->form = new StatusForm();
     }
 
     public function index(): ?string

@@ -5,13 +5,14 @@ namespace App\Controllers\Admin\Discount;
 use App\App;
 use App\Controllers\Base\AuthController;
 use App\Views\BasePage;
+use App\Views\Content\ChangeContent;
 use App\Views\Forms\Admin\DiscountForm;
-use Core\View;
 
 class AddController extends AuthController
 {
     protected DiscountForm $form;
     protected BasePage $page;
+    protected ChangeContent $change_content;
 
     /**
      * AddController constructor. Add discounts
@@ -25,6 +26,7 @@ class AddController extends AuthController
             $options[$pizza_id] = $pizza['name'];
         }
         $this->form = new DiscountForm($options);
+
         $this->page = new BasePage([
             'title' => 'ADD DISCOUNT',
         ]);
@@ -34,15 +36,24 @@ class AddController extends AuthController
     {
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
-            App::$db->insertRow('discounts', $clean_inputs);
+            $discount = App::$db->getRowWhere('discounts', ['pizza_id' => $clean_inputs['pizza_id']]);
+
+            if (!$discount) {
+                App::$db->insertRow('discounts', $clean_inputs);
+
+                $message = 'YOU ADDED DISCOUNT';
+            } else {
+                $message = 'DISCOUNT ALREADY EXISTS';
+            }
         }
 
-        $content = new View([
+        $this->change_content = new ChangeContent([
             'title' => 'ADD',
             'form' => $this->form->render(),
+            'message' => $message ?? null
         ]);
 
-        $this->page->setContent($content->render(ROOT . '/app/templates/content/forms.tpl.php'));
+        $this->page->setContent($this->change_content->render(ROOT . '/app/templates/content/forms.tpl.php'));
 
         return $this->page->render();
     }

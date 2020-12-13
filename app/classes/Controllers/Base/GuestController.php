@@ -6,7 +6,8 @@ use App\App;
 
 class GuestController
 {
-    protected $redirect = '/index';
+    protected string $redirect = '/index';
+
     public function __construct()
     {
         if (App::$session->getUser()) {

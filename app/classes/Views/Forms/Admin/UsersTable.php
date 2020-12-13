@@ -24,6 +24,7 @@ class UsersTable extends Table
             if ($row['email'] === $_SESSION['email']) {
                 unset($row['role_form']);
             }
+
             unset($row['email'], $row['password'], $row['role'], $row['name']);
         }
 

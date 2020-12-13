@@ -1,4 +1,4 @@
-<h1 class="header header--main"><?php print $data['title']; ?></h1>
+<h1><?php print $data['title']; ?></h1>
 
 <p><?php print $data['button']; ?></p>
 

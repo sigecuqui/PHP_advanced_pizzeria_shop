@@ -23,6 +23,7 @@ class HomeContent
     public function content()
     {
         if (Form::action()) {
+
             if ($this->form->validate()) {
                 $clean_inputs = $this->form->values();
 
@@ -61,6 +62,7 @@ class HomeContent
         if (!App::$session->getUser()) {
             $this->link = new Link([
                 'link' => '/login',
+                'class' => 'link',
                 'text' => 'LOGIN'
             ]);
 
@@ -71,6 +73,7 @@ class HomeContent
             if (App::$session->getUser()['role'] === 'admin') {
                 $this->link = new Link([
                     'link' => '/add',
+                    'class' => 'link',
                     'text' => 'ADD PIZZA'
                 ]);
 

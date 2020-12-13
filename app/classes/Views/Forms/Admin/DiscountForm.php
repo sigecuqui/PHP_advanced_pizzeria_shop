@@ -19,7 +19,7 @@ class DiscountForm extends Form
                     'type' => 'select',
                     'options' => $options,
                     'validators' => [
-//                        'validate_select'
+                        'validate_select'
                     ],
                     'extra' => [
                         'attr' => [
@@ -34,7 +34,7 @@ class DiscountForm extends Form
                     'value' => '',
                     'validators' => [
                         'validate_field_not_empty',
-                        'validate_numeric'
+                        'validate_numeric',
                     ],
                     'extra' => [
                         'attr' => [
@@ -54,6 +54,9 @@ class DiscountForm extends Form
                         ]
                     ]
                 ]
+            ],
+            'validators' => [
+                'validate_lower_number'
             ]
         ]);
     }

@@ -17,9 +17,11 @@ class UsersController extends AuthController
     public function __construct()
     {
         parent::__construct();
+
         $this->page = new BasePage([
             'title' => 'USERS',
         ]);
+
         $this->form = new RoleForm();
 
     }

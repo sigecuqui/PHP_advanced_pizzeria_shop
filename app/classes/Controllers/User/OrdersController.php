@@ -13,6 +13,7 @@ class OrdersController extends UserController
     public function __construct()
     {
         parent::__construct();
+
         $this->page = new BasePage([
             'title' => 'ORDERS',
         ]);

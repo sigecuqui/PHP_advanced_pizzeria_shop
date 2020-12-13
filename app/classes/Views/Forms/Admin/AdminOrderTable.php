@@ -16,11 +16,15 @@ class AdminOrderTable extends Table
     public function __construct()
     {
         $this->form = new StatusForm();
-
+        /**
+         * All orders
+         */
         $rows = App::$db->getRowsWhere('orders');
 
         foreach ($rows as $id => &$row) {
-            //Order by unique user
+            /**
+             * Order by unique user
+             */
             $user = App::$db->getRowWhere('users', ['email' => $row['email']]);
             $row['full_name'] = $user['name'];
 

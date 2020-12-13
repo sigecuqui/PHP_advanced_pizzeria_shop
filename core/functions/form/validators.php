@@ -106,23 +106,14 @@ function validate_numeric(string $field_value, array &$field): bool
     return true;
 }
 
-
-/**
- * Check if selected value is one of the possible options in options array
- *
- * @param $field_input
- * @param array $field
- * @return bool
- */
-function validate_select($field_input, array &$field): bool
+function validate_select($field_input, &$field): bool
 {
-    if (!isset($field['options'][$field_input])) {
-        $field['error'] = 'Input doesn\'t exist';
-
-        return false;
+    if (isset($field['options'][$field_input])) {
+        return true;
     }
+    $field['error'] = 'Input doesn\'t exist';
 
-    return true;
+    return false;
 }
 
 /**

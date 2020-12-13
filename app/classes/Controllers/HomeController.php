@@ -59,6 +59,7 @@ class HomeController extends Controller
      * print $controller->my();
      *
      * @return string|null
+     * @throws \Exception
      */
     function index(): ?string
     {
@@ -74,6 +75,7 @@ class HomeController extends Controller
         foreach ($rows as $id => &$row) {
 
             foreach ($discounts as $discount_id => $discount) {
+
                 if ($id == $discount['pizza_id']) {
                     $row['discount'] = true;
                     $row['price_different'] = number_format($row['price'], 2);
@@ -101,8 +103,9 @@ class HomeController extends Controller
                 }
             }
             $price = number_format($row['price'], 2);
-            $row['price'] = "{$price} $";
+            $row['price'] = "{$price} EUR";
         }
+
         $content = new View([
             'title' => 'WELCUM TU PYZERIE',
             'buttons' => [
@@ -112,11 +115,8 @@ class HomeController extends Controller
             'products' => $rows
         ]);
 
-        $page = new BasePage([
-            'title' => 'SHOP',
-            'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php')
-        ]);
+        $this->page->setContent($content->render(ROOT . '/app/templates/content/index.tpl.php'));
 
-        return $page->render();
+        return $this->page->render();
     }
 }
