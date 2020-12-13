@@ -9,11 +9,14 @@ use App\Views\BasePage;
 use App\Views\Forms\Admin\RoleForm;
 use App\Views\Forms\Admin\UsersTable;
 
-class UsersController extends AuthController
+class UsersRoleController extends AuthController
 {
     protected BasePage $page;
     protected RoleForm $form;
 
+    /**
+     * UsersRoleController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -26,6 +29,12 @@ class UsersController extends AuthController
 
     }
 
+    /**
+     * Changing user role
+     *
+     * @return string|null
+     * @throws \Exception
+     */
     public function index(): ?string
     {
         $rows = App::$db->getRowsWhere('users');

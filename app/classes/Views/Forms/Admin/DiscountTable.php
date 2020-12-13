@@ -8,6 +8,11 @@ use Core\Views\Table;
 
 class DiscountTable extends Table
 {
+    /**
+     * DiscountTable constructor. Show and regulate info about discounts
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
         $rows = App::$db->getRowsWhere('discounts');

@@ -14,12 +14,18 @@ class HomeContent
     protected OrderForm $order;
     protected Link $link;
 
+    /**
+     * HomeContent constructor.
+     */
     public function __construct()
     {
         $this->form = new DeleteForm();
         $this->order = new OrderForm();
     }
 
+    /**
+     * Regulates all home content
+     */
     public function content()
     {
         if (Form::action()) {
@@ -28,11 +34,6 @@ class HomeContent
                 $clean_inputs = $this->form->values();
 
                 App::$db->deleteRow('pizzas', $clean_inputs['id']);
-            }
-
-            if ($this->order->validate()) {
-                $clean_inputs = $this->order->values();
-                //TODO: Post a message, when order is made
             }
         }
 
@@ -87,6 +88,7 @@ class HomeContent
         if (!App::$session->getUser()) {
             return '';
         } elseif (App::$session->getUser()) {
+
             if (App::$session->getUser()['email'] === 'admin@admin.lt') {
                 $this->link = new Link([
                     'link' => '/admin/discounts/add',

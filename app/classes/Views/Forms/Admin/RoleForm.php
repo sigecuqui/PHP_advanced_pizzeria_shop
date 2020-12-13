@@ -6,6 +6,12 @@ use Core\Views\Form;
 
 class RoleForm extends Form
 {
+    /**
+     * RoleForm constructor. Regulate which info contains form
+     *
+     * @param null $value
+     * @param null $id
+     */
     public function __construct($value = null, $id = null)
     {
         parent::__construct([

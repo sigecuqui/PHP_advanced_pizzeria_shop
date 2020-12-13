@@ -15,7 +15,7 @@ class AddController extends AuthController
     protected ChangeContent $change_content;
 
     /**
-     * AddController constructor. Add discounts
+     * AddPizzaController constructor. Add discounts
      */
     public function __construct()
     {
@@ -32,6 +32,12 @@ class AddController extends AuthController
         ]);
     }
 
+    /**
+     * Add pizza discount
+     *
+     * @return string|null
+     * @throws \Exception
+     */
     public function index(): ?string
     {
         if ($this->form->validate()) {

@@ -14,6 +14,11 @@ class Navigation extends View
         parent::__construct($this->generate());
     }
 
+    /**
+     * All webpage navigation
+     *
+     * @return array
+     */
     public function generate()
     {
         $nav = ['HOME' => App::$router::getUrl('index')];

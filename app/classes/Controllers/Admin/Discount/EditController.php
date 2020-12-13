@@ -13,6 +13,9 @@ class EditController extends AuthController
     protected DiscountForm $form;
     protected BasePage $page;
 
+    /**
+     * EditController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -27,6 +30,12 @@ class EditController extends AuthController
         ]);
     }
 
+    /**
+     * Edit pizza discount
+     *
+     * @return string|null
+     * @throws \Exception
+     */
     public function index(): ?string
     {
         $row_id = $_GET['id'] ?? null;

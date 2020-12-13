@@ -7,6 +7,11 @@ use Core\Views\Form;
 
 class DiscountForm extends Form
 {
+    /**
+     * DiscountForm constructor. Regulate which info contains form
+     *
+     * @param null $options
+     */
     public function __construct($options = null)
     {
         parent::__construct([

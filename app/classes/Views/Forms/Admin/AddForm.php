@@ -6,6 +6,9 @@ use Core\Views\Form;
 
 class AddForm extends Form
 {
+    /**
+     * AddForm constructor. Regulate which info contains form
+     */
     public function __construct()
     {
         parent::__construct([
@@ -22,7 +25,7 @@ class AddForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Enter pizza\'s title',
+                            'placeholder' => 'ENTER PIZZA\'S TITLE',
                             'class' => 'input-field',
                         ],
                     ],
@@ -41,7 +44,7 @@ class AddForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Enter item\'s price',
+                            'placeholder' => 'ENTER ITEM\'S PRICE',
                             'class' => 'input-field',
                         ],
                     ],
@@ -56,7 +59,7 @@ class AddForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Enter item\'s image URL',
+                            'placeholder' => 'ENTER ITEM\'S IMAGE URL',
                             'class' => 'input-field',
                         ],
                     ],

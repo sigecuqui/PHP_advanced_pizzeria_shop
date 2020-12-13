@@ -25,6 +25,12 @@ class ListController extends AuthController
         ]);
     }
 
+    /**
+     * Regulate pizza discount
+     *
+     * @return string|null
+     * @throws \Exception
+     */
     public function index(): ?string
     {
         if (Form::action()) {

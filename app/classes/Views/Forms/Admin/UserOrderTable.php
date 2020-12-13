@@ -9,12 +9,15 @@ use Core\Views\Table;
 
 class UserOrderTable extends Table
 {
+    /**
+     * UserOrderTable constructor. Show and regulate info about orders
+     */
     public function __construct()
     {
         $rows = App::$db->getRowsWhere('orders', ['email' => $_SESSION['email']]);
 
         foreach ($rows as $id => &$row) {
-            // timestamp logic
+            // Order timestamp logic
             $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
             $difference = abs(strtotime('now') - strtotime($timeStamp));
 
@@ -28,6 +31,9 @@ class UserOrderTable extends Table
             unset($row['email']);
         }
 
+        /**
+         * Information table
+         */
         parent::__construct([
             'headers' => [
                 'ID',

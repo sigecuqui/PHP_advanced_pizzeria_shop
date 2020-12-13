@@ -15,6 +15,11 @@ class RegisterController extends GuestController
     protected BasePage $page;
     protected ChangeContent $change_content;
 
+    /**
+     * RegisterController constructor.
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
         parent::__construct();

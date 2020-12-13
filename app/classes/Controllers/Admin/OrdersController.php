@@ -6,13 +6,13 @@ namespace App\Controllers\Admin;
 use App\App;
 use App\Controllers\Base\AuthController;
 use App\Views\BasePage;
-use App\Views\Forms\Admin\StatusForm;
+use App\Views\Forms\Admin\UserStatusForm;
 use App\Views\Forms\Admin\AdminOrderTable;
 
 class OrdersController extends AuthController
 {
     protected BasePage $page;
-    protected StatusForm $form;
+    protected UserStatusForm $form;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class OrdersController extends AuthController
             'title' => 'ORDERS',
         ]);
 
-        $this->form = new StatusForm();
+        $this->form = new UserStatusForm();
     }
 
     public function index(): ?string

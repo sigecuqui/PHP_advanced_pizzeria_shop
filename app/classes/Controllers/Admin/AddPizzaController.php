@@ -8,12 +8,15 @@ use App\Views\BasePage;
 use App\Views\Content\ChangeContent;
 use App\Views\Forms\Admin\AddForm;
 
-class AddController extends AuthController
+class AddPizzaController extends AuthController
 {
     protected AddForm $form;
     protected BasePage $page;
     protected ChangeContent $change_content;
 
+    /**
+     * AddPizzaController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -25,6 +28,12 @@ class AddController extends AuthController
         ]);
     }
 
+    /**
+     * Add pizza to the list
+     *
+     * @return string|null
+     * @throws \Exception
+     */
     public function add(): ?string
     {
 
@@ -33,6 +42,7 @@ class AddController extends AuthController
             App::$db->insertRow('pizzas', $clean_inputs);
         }
 
+        //Add form
         $this->change_content = new ChangeContent([
             'title' => 'ADD',
             'form' => $this->form->render(),

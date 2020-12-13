@@ -9,6 +9,11 @@ class UsersTable extends Table
 {
     protected RoleForm $form;
 
+    /**
+     * UsersTable constructor. Show and regulate info about users
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
         $this->form = new RoleForm();
@@ -29,7 +34,7 @@ class UsersTable extends Table
         }
 
         /**
-         * Table generate: header array + rows data
+         * Information table
          */
         parent::__construct([
             'headers' => [

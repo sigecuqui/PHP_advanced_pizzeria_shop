@@ -8,7 +8,7 @@ use App\Views\BasePage;
 use App\Views\Content\ChangeContent;
 use App\Views\Forms\Admin\AddForm;
 
-class EditController extends AuthController
+class EditPizzaController extends AuthController
 {
 
     protected AddForm $form;

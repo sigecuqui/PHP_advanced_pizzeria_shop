@@ -8,6 +8,11 @@ use Core\Views\Form;
 
 class OrderForm extends Form
 {
+    /**
+     * OrderForm constructor. Regulate which info contains form
+     *
+     * @param null $value
+     */
     public function __construct($value = null)
     {
         parent::__construct([

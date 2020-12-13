@@ -10,6 +10,9 @@ class OrdersController extends UserController
 {
     protected BasePage $page;
 
+    /**
+     * OrdersController constructor. Show information to user about his order
+     */
     public function __construct()
     {
         parent::__construct();

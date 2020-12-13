@@ -13,15 +13,23 @@ class LoginController extends GuestController
 {
     protected LoginForm $form;
     protected BasePage $page;
-    protected ChangeContent $form_content;
+    protected ChangeContent $change_content;
 
+    /**
+     * LoginController constructor.
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
         parent::__construct();
+
         $this->form = new LoginForm();
+
         $this->page = new BasePage([
             'title' => 'LOGIN'
         ]);
+
         $this->change_content = new ChangeContent([
             'title' => 'LOGIN',
             'form' => $this->form->render()

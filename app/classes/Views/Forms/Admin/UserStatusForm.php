@@ -6,8 +6,14 @@ namespace App\Views\Forms\Admin;
 
 use Core\Views\Form;
 
-class StatusForm extends Form
+class UserStatusForm extends Form
 {
+    /**
+     * UserStatusForm constructor. Regulate which info contains form
+     *
+     * @param null $value
+     * @param null $id
+     */
     public function __construct($value = null, $id = null)
     {
         parent::__construct([

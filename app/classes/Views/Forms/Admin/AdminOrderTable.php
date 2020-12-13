@@ -6,16 +6,21 @@ namespace App\Views\Forms\Admin;
 
 use App\App;
 use App\Views\Content\TimeStamp;
-use App\Views\Forms\Admin\StatusForm;
+use App\Views\Forms\Admin\UserStatusForm;
 use Core\Views\Table;
 
 class AdminOrderTable extends Table
 {
-    protected StatusForm $form;
+    protected UserStatusForm $form;
 
+    /**
+     * AdminOrderTable constructor. Regulate what to do with an order
+     *
+     * @throws \Exception
+     */
     public function __construct()
     {
-        $this->form = new StatusForm();
+        $this->form = new UserStatusForm();
         /**
          * All orders
          */
@@ -28,7 +33,7 @@ class AdminOrderTable extends Table
             $user = App::$db->getRowWhere('users', ['email' => $row['email']]);
             $row['full_name'] = $user['name'];
 
-            // timestamp logic
+            // Order timestamp logic
 
             $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
             $difference = abs(strtotime('now') - strtotime($timeStamp));
@@ -42,7 +47,7 @@ class AdminOrderTable extends Table
             $row['timestamp'] = $result;
             ///
 
-            $statusForm = new StatusForm($row['status'], $id);
+            $statusForm = new UserStatusForm($row['status'], $id);
             $rows[$id]['role_form'] = $statusForm->render();
             unset($row['email'], $row['status']);
         }

@@ -6,6 +6,11 @@ use Core\Views\Form;
 
 class DeleteForm extends Form
 {
+    /**
+     * DeleteForm constructor. Regulate which info contains form
+     *
+     * @param null $value
+     */
     public function __construct($value = null)
     {
         parent::__construct([
